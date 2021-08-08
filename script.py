@@ -10,8 +10,8 @@ from botocore.exceptions import NoCredentialsError
 
 load_dotenv()
 
-ACCESS_KEY = getenv("ACCESS_KEY")
-SECRET_KEY = getenv("SECRET_KEY")
+AWS_ACCESS_KEY = getenv("AWS_ACCESS_KEY")
+AWS_SECRET_KEY = getenv("AWS_SECRET_KEY")
 
 
 def make_tarfile(output_filename: str, source_dir: Union[Path, str]):
@@ -23,7 +23,7 @@ def upload_to_aws(
     local_file: Union[Path, str], bucket: str, s3_file: Union[Path, str] = None
 ):
     s3 = boto3.client(
-        "s3", aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY
+        "s3", aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_KEY
     )
     try:
         if not s3_file:
